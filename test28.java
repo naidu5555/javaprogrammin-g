@@ -24,6 +24,20 @@ public class test28 {
 		System.out.println("Data written to file");
 		filechannel.close();
 		file.close();
+		read();
+	}
+	public static void read() throws Exception{
+		RandomAccessFile file=new RandomAccessFile("C:\\gowtham\\amazon.store","rw");
+		FileChannel channel=file.getChannel();
+		ByteBuffer buffer=ByteBuffer.allocate(1024);
+		int numOfbytesRead=channel.read(buffer);
+		for(int i=0;i<numOfbytesRead;i++) {
+			char c=(char)buffer.get(i);
+			System.out.print(c);
+		}
+		channel.close();
+		file.close();
+		
 	}
 
 }
